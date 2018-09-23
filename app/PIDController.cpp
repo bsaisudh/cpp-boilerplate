@@ -1,12 +1,11 @@
-#include "../include/PIDController.h"
-
 /**
- * Class implementation for the PID Controller class.
  * @brief Code written as a part of the Test Driven Development Assignment
+ * @Copyright [2018]<Akshay>
  * @author Akshay
- * @Copyright Akshay
- * @file PIDController.h
+ * @file PIDController.cpp
  */
+
+#include "../include/PIDController.h"
 
 PIDController::PIDController()
     : Kp(0), Kd(0), Ki(0), initError(0), prevError(0) {}
