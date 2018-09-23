@@ -1,13 +1,6 @@
-/**
- * @Copyright [2018] <Akshay>
- * @brief main function for using an instance of the PIDController class
- * @author Akshay
- * @file main.cpp
- */
-#include <iostream>
-#include "../include/PIDController.h"
+#include <gtest/gtest.h>
 
-int main() {
-
-  return 0;
+int main(int argc, char** argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
