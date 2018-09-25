@@ -1,7 +1,7 @@
 /**
  * @Copyright [2018] <Akshay>
  * @brief main function for using an instance of the PIDController class
- * @author Akshay
+ * @author Akshay, Bala
  * @file main.cpp
  */
 #include <iostream>

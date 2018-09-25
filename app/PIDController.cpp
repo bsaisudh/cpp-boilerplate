@@ -1,7 +1,7 @@
 /**
  * @brief Code written as a part of the Test Driven Development Assignment
  * @Copyright [2018]<Akshay>
- * @author Akshay
+ * @author Akshay, Bala
  * @file PIDController.cpp
  */
 
