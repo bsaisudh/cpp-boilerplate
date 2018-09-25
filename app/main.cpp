@@ -12,11 +12,11 @@
  */
 
 int main() {
-  PIDController pid;          // Creating pointer for controller class
-  pid.setKd(0.1);             // Set kp, kd and ki values
+  PIDController pid;            // Creating pointer for controller class
+  pid.setKd(0.1);               // Set kp, kd and ki values
   pid.setKp(0.1);
   pid.setKi(0.1);
-  double currentVelocity = 1; // Initializing current velocity
+  double currentVelocity = 1;   // Initializing current velocity
   double newVelocity = currentVelocity;  // Initializing new velocity
   double endVelocity = 10;    // Initializing end velocity
   // Loop till final velocity is within acceptable range

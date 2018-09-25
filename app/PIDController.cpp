@@ -19,14 +19,22 @@ PIDController::~PIDController() {
 }
 
 double PIDController::compute(double currentVelocity, double endVelocity) {
-  double error = endVelocity - currentVelocity;   // Calculating error
-  initError += error;                             // Calculate integral error
-  double difError = error - prevError;            // Calculate differential error
-  double intConstant = initError * Ki;            // Calculate integral constant
-  double proConstant = error * Kp;                // Calculate proportional constant
-  double difConstant = difError * Kd;             // Calculate differential constant
-  prevError = error;                              // Save current error
-  return intConstant + proConstant + difConstant; // return PID output
+  // Calculating error
+  double error = endVelocity - currentVelocity;
+  // Calculate integral error
+  initError += error;
+  // Calculate differential error
+  double difError = error - prevError;
+  // Calculate integral constant
+  double intConstant = initError * Ki;
+  // Calculate proportional constant
+  double proConstant = error * Kp;
+  // Calculate differential constant
+  double difConstant = difError * Kd;
+  // Save current error
+  prevError = error;
+  // Return PID output
+  return intConstant + proConstant + difConstant;
 }
 
 double PIDController::getKd() {
