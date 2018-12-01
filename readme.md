@@ -84,14 +84,14 @@ target_include_directories(cpp-test PUBLIC ../vendor/googletest/googlemock/inclu
 target_link_libraries(cpp-test PUBLIC gtest gmock)
 ```
 
-### More Info
+### More info on google Mock
 For more information on gmock please visit this [link](https://github.com/abseil/googletest/blob/master/googlemock/docs/ForDummies.md)
 
 ## Class Diagram
 
 </p>
 <p align="center">
-<img src="/UML Diagrams/UML Class PID 1.png">
+<img src="/UML Diagrams/UML\ Class\ PID\ 1.png">
 </p>
 </p>
 
@@ -107,7 +107,7 @@ For more information on gmock please visit this [link](https://github.com/abseil
 
 </p>
 <p align="center">
-<img src="/UML Diagrams/Activity Diagram Main PID.png">
+<img src="/UML Diagrams/Activity\ Diagram\ Main\ PID.png">
 </p>
 </p>
 
