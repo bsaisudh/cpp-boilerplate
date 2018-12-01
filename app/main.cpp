@@ -4,24 +4,16 @@
  * @author Akshay, Bala
  * @file main.cpp
  */
+
 #include <iostream>
 #include "../include/PIDController.h"
+#include "../include/Executer.h"
 
 /**
  * @brief calculate the path form start velocity to end velocity through PID algorithm
  */
-
 int main() {
-  PIDController pid;            // Creating pointer for controller class
-  pid.setKd(0.1);               // Set kp, kd and ki values
-  pid.setKp(0.1);
-  pid.setKi(0.1);
-  double currentVelocity = 1;   // Initializing current velocity
-  double newVelocity = currentVelocity;  // Initializing new velocity
-  double endVelocity = 10;    // Initializing end velocity
-  // Loop till final velocity is within acceptable range
-  while ((endVelocity - newVelocity) > 0.001) {
-    newVelocity = pid.compute(currentVelocity, endVelocity);
-    currentVelocity = newVelocity;
-  }
+  PIDController pid;  // Creating pointer for controller class
+  Executer exe(pid);
+  exe.runPID();
 }

@@ -12,19 +12,19 @@
 class PIDController {
  public:
   PIDController();
-  ~PIDController();
+  virtual ~PIDController();
   /** @params startPoint
    *  @params endPoint
    *  @brief function to compute the end velocity for controlling a moving
    * object in 1 Dimension
    */
-  double compute(double startPoint, double endPoint);
-  void setKp(double KpIn);
-  double getKp();
-  void setKd(double KdIn);
-  double getKd();
-  void setKi(double KiIn);
-  double getKi();
+  virtual double compute(double startPoint, double endPoint);
+  virtual void setKp(double KpIn);
+  virtual double getKp();
+  virtual void setKd(double KdIn);
+  virtual double getKd();
+  virtual void setKi(double KiIn);
+  virtual double getKi();
 
  private:
   double Kp, Kd, Ki;
