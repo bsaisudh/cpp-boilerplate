@@ -97,7 +97,7 @@ For more information on gmock please visit this [link](https://github.com/abseil
 ## Activity Diagram PID Controller Class
 </p>
 <p align="center">
-<img src="/UML Diagrams/ActivityDiagram.jpg">
+<img src="/UML Diagrams/ActivityDiagram.jpeg">
 </p>
 </p>
 
