@@ -88,16 +88,25 @@ target_link_libraries(cpp-test PUBLIC gtest gmock)
 For more information on gmock please visit this [link](https://github.com/abseil/googletest/blob/master/googlemock/docs/ForDummies.md)
 
 ## Class Diagram
-
-![Class Diagram](https://github.com/bsaisudh/cpp-boilerplate/tree/GMock_Extra_Credit/UML Diagrams/UMLClassPID1.jpg)
-
+</p>
+<p align="center">
+<img src="/UML Diagrams/UMLClassPID1.jpg">
+</p>
+</p>
 
 ## Activity Diagram PID Controller Class
-![Activity Diagram](https://github.com/bsaisudh/cpp-boilerplate/tree/GMock_Extra_Credit/UML Diagrams/ActivityDiagram.jpg)
+</p>
+<p align="center">
+<img src="/UML Diagrams/ActivityDiagram.jpg">
+</p>
+</p>
 
 ## Activity Diagram Executer Class
-![Activity Diagram](https://github.com/bsaisudh/cpp-boilerplate/tree/GMock_Extra_Credit/UML Diagrams/ActivityDiagram MainPID.png)
-
+</p>
+<p align="center">
+<img src="/UML Diagrams/ActivityDiagram MainPID.png">
+</p>
+</p>
 
 ## Standard install via command-line
 ```
