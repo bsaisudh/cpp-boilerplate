@@ -89,27 +89,15 @@ For more information on gmock please visit this [link](https://github.com/abseil
 
 ## Class Diagram
 
-</p>
-<p align="center">
-<img src="/UML Diagrams/UML\ Class\ PID\ 1.png">
-</p>
-</p>
+![Class Diagram](https://github.com/bsaisudh/cpp-boilerplate/tree/GMock_Extra_Credit/UML%20Diagrams/UMLClassPID1.jpg)
+
 
 ## Activity Diagram PID Controller Class
-
-</p>
-<p align="center">
-<img src="/UML Diagrams/ActivityDiagram.png">
-</p>
-</p>
+![Activity Diagram](https://github.com/bsaisudh/cpp-boilerplate/tree/GMock_Extra_Credit/UML%20Diagrams/ActivityDiagram.jpg)
 
 ## Activity Diagram Executer Class
+![Activity Diagram](https://github.com/bsaisudh/cpp-boilerplate/tree/GMock_Extra_Credit/UML%20Diagrams/ActivityDiagram MainPID.png)
 
-</p>
-<p align="center">
-<img src="/UML Diagrams/Activity\ Diagram\ Main\ PID.png">
-</p>
-</p>
 
 ## Standard install via command-line
 ```
