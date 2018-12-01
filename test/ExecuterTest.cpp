@@ -3,7 +3,7 @@
  * @Copyright MIT license
  * Copyright (c) 2018 Bala Murali Manoghar Sai Sudhakar
  * @author Bala Murali Manoghar Sai Sudhakar
- * @brief mock test for square class
+ * @brief mock test for PID Class class and test Executer class
  */
 
 /*
@@ -31,10 +31,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include <sstream>
-#include <iostream>
-#include <string>
-
 #include "../include/PIDController.h"
 #include "../include/Executer.h"
 
@@ -42,7 +38,7 @@ using ::testing::Return;
 using ::testing::_;
 using ::testing::AtLeast;
 /**
- * @brief Mock class for Square class
+ * @brief Mock class for PIDController class
  */
 class MockPID : public PIDController {
  public:
@@ -53,25 +49,18 @@ class MockPID : public PIDController {
   MOCK_METHOD0(getKd, double());
   MOCK_METHOD1(setKi, void(double KiIn));
   MOCK_METHOD0(getKi, double());
-
 };
 
 /**
- * @brief Testing the inObstacle function mock
+ * @brief Testing function calling unsing mock
  */
-TEST(TestMock,Computetest){
+TEST(TestMock, Computetest) {
   MockPID mPID;  // Creating pointer for controller class
   Executer exe(mPID);
-  EXPECT_CALL(mPID, setKd(_))
-        .Times(AtLeast(1));
-  EXPECT_CALL(mPID, setKp(_))
-          .Times(AtLeast(1));
-  EXPECT_CALL(mPID, setKi(_))
-          .Times(AtLeast(1));
-  EXPECT_CALL(mPID, compute(_,_))
-      .Times(AtLeast(1))
-      .WillOnce(Return(10))
+  EXPECT_CALL(mPID, setKd(_)).Times(AtLeast(1));
+  EXPECT_CALL(mPID, setKp(_)).Times(AtLeast(1));
+  EXPECT_CALL(mPID, setKi(_)).Times(AtLeast(1));
+  EXPECT_CALL(mPID, compute(_, _)).Times(AtLeast(1)).WillOnce(Return(10))
       .WillRepeatedly(Return(10));
   exe.runPID();
-  EXPECT_EQ(true,true);
 }

@@ -1,18 +1,119 @@
 # C++ Boilerplate
 [![Build Status](https://travis-ci.org/AkshayRajaramanSubramanian/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/AkshayRajaramanSubramanian/cpp-boilerplate)
 [![Coverage Status](https://coveralls.io/repos/github/AkshayRajaramanSubramanian/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/AkshayRajaramanSubramanian/cpp-boilerplate?branch=master)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/bsaisudh/cpp-boilerplate/blob/GMock_Extra_Credit/LICENSE)
 ---
 
 ## Overview
 
-Simple starter C++ project with:
+This program implements a simple PID controller in C++ platform and demonstrates the useage of GTEST and GMOCK framework for unit testing.
+
+## Dependencies
 
 - cmake
 - googletest
+- google mock
+
+## Google Gmock Useage 
+
+GMOCK is used to test the API functionality rather thatn testing the functionality itself. For gmock all the class members have to be virtual and the mocked class will be inherited form the actual class. Some amount of refactoring may be required for integrating gmock to the existing frame code
+<br><br>
+The top level class that consumes low level class has to take the low level object from outside and should be a reference as shown below. Here the PIDController class will be mocked
+```
+class Executer {
+  PIDController &pid;
+ public:
+  /**
+   * @brief Constructor for Executer CLass
+   * @param None
+   * @return None
+   */
+  explicit Executer(PIDController &_pid);
+}
+```
+Get the class object reference through constructor
+```
+Executer::Executer(PIDController &_pid)
+    : pid(_pid) {
+}
+```
+Create a mock class for PIDController class in the test file using MOCK_METHOD* macros
+```
+class MockPID : public PIDController {
+ public:
+  MOCK_METHOD2(compute, double(double startPoint, double endPoint));
+  MOCK_METHOD1(setKp, void(double KpIn));
+  MOCK_METHOD0(getKp, double());
+  MOCK_METHOD1(setKd, void(double KdIn));
+  MOCK_METHOD0(getKd, double());
+  MOCK_METHOD1(setKi, void(double KiIn));
+  MOCK_METHOD0(getKi, double());
+};
+```
+EXPECT_CALL* methods are used to specy that a particular function will be called
+```
+TEST(TestMock, Computetest) {
+  MockPID mPID;  // Creating pointer for controller class
+  Executer exe(mPID);
+  EXPECT_CALL(mPID, setKd(_)).Times(AtLeast(1));
+  EXPECT_CALL(mPID, setKp(_)).Times(AtLeast(1));
+  EXPECT_CALL(mPID, setKi(_)).Times(AtLeast(1));
+  EXPECT_CALL(mPID, compute(_, _)).Times(AtLeast(1)).WillOnce(Return(10))
+      .WillRepeatedly(Return(10));
+  exe.runPID();
+}
+```
+Google mock needs to be initialized in the main test file
+```
+  // Initialize Google Test
+  ::testing::InitGoogleTest(&argc, argv);
+  ::testing::GTEST_FLAG(throw_on_failure) = true;
+  // Initialize google mock
+  ::testing::InitGoogleMock(&argc, argv);
+```
+## Cmake chages needed
+
+It is enough if gmock folder is alone added in toplecel folder
+```
+add_subdirectory(vendor/googletest/googlemock)
+```
+Add the mock librarties in test cmake file
+```
+target_include_directories(cpp-test PUBLIC ../vendor/googletest/googlemock/include 
+                                           ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(cpp-test PUBLIC gtest gmock)
+```
+
+### More Info
+For more information on gmock please visit this [link](https://github.com/abseil/googletest/blob/master/googlemock/docs/ForDummies.md)
+
+## Class Diagram
+
+</p>
+<p align="center">
+<img src="/UML Diagrams/UML Class PID 1.png">
+</p>
+</p>
+
+## Activity Diagram PID Controller Class
+
+</p>
+<p align="center">
+<img src="/UML Diagrams/ActivityDiagram.png">
+</p>
+</p>
+
+## Activity Diagram Executer Class
+
+</p>
+<p align="center">
+<img src="/UML Diagrams/Activity Diagram Main PID.png">
+</p>
+</p>
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone -b GMock_Extra_Credit --recursive https://github.com/bsaisudh/cpp-boilerplate.git
 cd <path to repository>
 mkdir build
 cd build
@@ -22,7 +123,7 @@ Run tests: ./test/cpp-test
 Run program: ./app/shell-app
 ```
 
-## Building for code coverage (for assignments beginning in Week 4)
+## Building for code coverage
 ```
 sudo apt-get install lcov
 cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
